@@ -139,15 +139,16 @@
 		F0EDB46E235E37E900BA26B0 /* MovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				F0EDB49F235E56E100BA26B0 /* Home */,
+				F0EDB4AF235E719000BA26B0 /* Menu */,
 				F0EDB46F235E37E900BA26B0 /* AppDelegate.swift */,
 				F0EDB478235E37EB00BA26B0 /* Assets.xcassets */,
-				F0EDB49F235E56E100BA26B0 /* Home */,
+				F0EDB4A4235E633700BA26B0 /* TVShows */,
 				F0EDB47D235E37EB00BA26B0 /* Info.plist */,
 				F0EDB47A235E37EB00BA26B0 /* LaunchScreen.storyboard */,
 				F0EDB475235E37E900BA26B0 /* Main.storyboard */,
 				F0EDB4A2235E630D00BA26B0 /* Movies */,
 				F0EDB471235E37E900BA26B0 /* SceneDelegate.swift */,
-				F0EDB4A4235E633700BA26B0 /* TVShows */,
 				F0EDB473235E37E900BA26B0 /* ViewController.swift */,
 			);
 			path = MovieApp;
@@ -182,7 +183,6 @@
 		F0EDB4A2235E630D00BA26B0 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				F0EDB4A6235E638F00BA26B0 /* controller */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -206,8 +206,6 @@
 		F0EDB4A5235E637F00BA26B0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				F0EDB4A7235E645A00BA26B0 /* TVShowsMenuViewController.swift */,
-				F0EDB4A8235E645A00BA26B0 /* TVShowsMenuViewController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -215,10 +213,20 @@
 		F0EDB4A6235E638F00BA26B0 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F0EDB4A7235E645A00BA26B0 /* TVShowsMenuViewController.swift */,
+				F0EDB4A8235E645A00BA26B0 /* TVShowsMenuViewController.xib */,
 				F0EDB4AB235E686000BA26B0 /* MoviesMenuViewController.swift */,
 				F0EDB4AC235E686000BA26B0 /* MoviesMenuViewController.xib */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		F0EDB4AF235E719000BA26B0 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F0EDB4A6235E638F00BA26B0 /* controller */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		F1DDEB2E860BEA7679EC60FD /* Pods */ = {
