@@ -7,6 +7,10 @@ target 'MovieApp' do
   pod 'Alamofire', '~> 4.7'
   pod 'AlamofireImage', '~> 3.3'
   pod 'PKHUD', '~> 5.0'
+  pod 'ReachabilitySwift'
+  pod 'RealmSwift'
+  pod 'SwiftyJSON'
+  pod 'UIScrollView-InfiniteScroll'
 
   # Pods for MovieApp
 
