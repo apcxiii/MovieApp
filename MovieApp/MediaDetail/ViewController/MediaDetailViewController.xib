@@ -10,6 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaDetailViewController" customModule="MovieApp" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="Ih8-yU-WxN" id="jdA-tM-spC"/>
+                <outlet property="releaseDateLabel" destination="SUu-Md-41s" id="TPf-Gu-6cM"/>
+                <outlet property="titleLabel" destination="D3s-Xi-OU6" id="GuI-Vn-ySh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,11 +27,27 @@
                         <constraint firstAttribute="width" secondItem="Ih8-yU-WxN" secondAttribute="height" multiplier="207:64" id="rhG-Pp-47w"/>
                     </constraints>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3s-Xi-OU6">
+                    <rect key="frame" x="10" y="182" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUu-Md-41s">
+                    <rect key="frame" x="10" y="213" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Ih8-yU-WxN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Gh0-PB-T8l"/>
+                <constraint firstItem="D3s-Xi-OU6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="hNc-eF-Ndj"/>
+                <constraint firstItem="SUu-Md-41s" firstAttribute="top" secondItem="D3s-Xi-OU6" secondAttribute="bottom" constant="10" id="jQn-x4-OUs"/>
+                <constraint firstItem="SUu-Md-41s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="p1f-fB-ugF"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ih8-yU-WxN" secondAttribute="trailing" id="pvj-Wv-D2s"/>
+                <constraint firstItem="D3s-Xi-OU6" firstAttribute="top" secondItem="Ih8-yU-WxN" secondAttribute="bottom" constant="10" id="tCH-3i-rG5"/>
                 <constraint firstItem="Ih8-yU-WxN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xc1-ow-q7b"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

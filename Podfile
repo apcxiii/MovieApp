@@ -5,11 +5,10 @@ target 'MovieApp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'Alamofire', '~> 4.7'
-  pod 'AlamofireImage', '~> 3.3'
   pod 'AlamofireObjectMapper', '~> 5.0'
   pod 'PKHUD', '~> 5.0'
   pod 'ReachabilitySwift'  
-  pod 'UIScrollView-InfiniteScroll'
+  pod 'SDWebImage', '~> 4.3'
 
   # Pods for MovieApp
 

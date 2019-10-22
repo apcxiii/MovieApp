@@ -9,12 +9,12 @@
 import UIKit
 
 protocol MediaDetailRouterProtocol: class {
-    static func createMediaDetailModule(forCar mediaModel: MediaModel) -> UIViewController
+    static func createMediaDetailModule(forMedia mediaModel: MediaModel) -> UIViewController
 }
 
 
 class MediaDetailRouter: MediaDetailRouterProtocol {
-  static func createMediaDetailModule(forCar mediaModel: MediaModel) -> UIViewController {
+  static func createMediaDetailModule(forMedia mediaModel: MediaModel) -> UIViewController {
     let view = MediaDetailViewController()
     let presenter: MediaDetailPresenterProtocol = MediaDetailPresenter()
     let router: MediaDetailRouterProtocol = MediaDetailRouter()

@@ -33,6 +33,7 @@ UITableViewDelegate, UITableViewDataSource {
     super.viewDidLoad()
     presenter?.viewDidLoad()
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MovieCell")
+    self.tableView.register(UINib(nibName: "MediaCell", bundle: nil), forCellReuseIdentifier: "MediaCell")
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.tableView.tableFooterView = UIView()
@@ -72,13 +73,24 @@ UITableViewDelegate, UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell")
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MediaCell",
+                                             for: indexPath) as! MediaCell    
     let media = movieList[indexPath.row]
-    cell?.textLabel?.text = media.title
+    cell.bind(mediaModel: media)
     
-    return cell!
+    return cell
   }
   
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let mediaModel = self.movieList[indexPath.row]
+    presenter?.showMediaDetail(forMedia: mediaModel)
+  }
+  
+  
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 220
+  }
   
   
 }

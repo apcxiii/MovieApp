@@ -9,26 +9,38 @@
 import Foundation
 
 protocol MoviesPresenterProtocol: class {
-    var view: MoviesViewProtocol? { get set }
-    var interactor: MoviesInteractorInputProtocol? { get set }
-    var router: MoviesRouterProtocol? { get set }
-    
-    // VIEW -> PRESENTER
-    func viewDidLoad()
-    func showMediaDetail(forMedia mediaModel: MediaModel)
-
+  var view: MoviesViewProtocol? { get set }
+  var interactor: MoviesInteractorInputProtocol? { get set }
+  var router: MoviesRouterProtocol? { get set }
+  var sourceMediaType: Int {get set}
+  
+  // VIEW -> PRESENTER
+  func viewDidLoad()
+  func showMediaDetail(forMedia mediaModel: MediaModel)
+  
 }
 
 
 class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
   
+  
+  
   weak var view: MoviesViewProtocol?  
   var interactor: MoviesInteractorInputProtocol?
   var router: MoviesRouterProtocol?
+  var sourceMediaType: Int = 0
   
   func viewDidLoad() {
     view?.showLoading()
-    interactor?.retrieveTopMovies()
+    switch sourceMediaType {
+    case SourceMediaType.topMovies.rawValue:
+      interactor?.retrieveTopMovies()
+    case SourceMediaType.popularMovies.rawValue:
+      interactor?.retrievePopularMovies()
+    default:
+      interactor?.retriveUpcomingMovies()
+    }
+    
   }
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {

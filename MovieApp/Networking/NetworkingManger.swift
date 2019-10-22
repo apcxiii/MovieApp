@@ -29,6 +29,8 @@ protocol NetworkingManagerOutputProtocol: class {
 
 
 class NetworkingManger: NetworkingManagerInputProtocol {
+    var remoteRequestHandler: NetworkingManagerOutputProtocol?
+  
   func retrievePopularMovies() {
     //perform an HTTP GET request with the provided url
     Alamofire.request(APIV3Url.MoviesPopularList.fetch.url, method: .get)
@@ -60,8 +62,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         }
     }
   }
-  
-  var remoteRequestHandler: NetworkingManagerOutputProtocol?
+    
   
   func retrieveTopMovies() {
     //perform an HTTP GET request with the provided url

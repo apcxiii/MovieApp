@@ -44,8 +44,22 @@ class MoviesMenuViewController: UIViewController, UITableViewDelegate, UITableVi
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let router = MoviesRouter.createMoviesModule()
-    self.navigationController?.pushViewController(router, animated: true)
+    
+    switch indexPath.row {
+    case 0:
+      let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.popularMovies.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
+    case 1:
+      let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.topMovies.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
+    case 2:
+      let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.upComingMovies.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
+    default:
+      NSLog("nothing to do")
+    }
+    
+    
     self.tableView.deselectRow(at: indexPath, animated: true)
   }
     

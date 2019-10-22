@@ -20,24 +20,44 @@ protocol MoviesInteractorOutputProtocol: class {
 protocol MoviesInteractorInputProtocol: class {
   var presenter: MoviesInteractorOutputProtocol? { get set }
   var networkManager: NetworkingManagerInputProtocol? { get set }
-  
+  var sourceMadiaType: Int {get set}
   // PRESENTER -> INTERACTOR
   func retrieveTopMovies()
+  func retrievePopularMovies()
+  func retriveUpcomingMovies()
 }
 
 class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputProtocol {
   
   
+    
+  
   
   weak var presenter: MoviesInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
+  var sourceMadiaType: Int = 0
   
   func retrieveTopMovies() {
     networkManager?.retrieveTopMovies()
   }
   
+  func retrievePopularMovies() {
+    networkManager?.retrievePopularMovies()
+  }
+  
+  func retriveUpcomingMovies() {
+    networkManager?.retrieveUpcomingMovies()
+  }
+  
   func onPopularMoviesRetrieved(_ movies: [MediaModel]) {
-    presenter?.didRetrievePopularMovies(movies)
+    switch sourceMadiaType {
+    case SourceMediaType.topMovies.rawValue:
+      presenter?.didRetrieveTopMovies(movies)
+    case SourceMediaType.popularMovies.rawValue:
+      presenter?.didRetrievePopularMovies(movies)
+    default:
+      presenter?.didRetrieveUpcomingMovies(movies)
+    }
   }
   
   func onUpcomingMoviesRetrieved(_ movies: [MediaModel]) {
