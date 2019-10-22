@@ -11,6 +11,7 @@
 		056336ED28B4625981F24E30 /* Pods_MovieAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B9058B126E0F9927E287E0 /* Pods_MovieAppTests.framework */; };
 		BE29BA0E59E27A53D43BE0BF /* Pods_MovieAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 368029E4050BC50BF26DE563 /* Pods_MovieAppUITests.framework */; };
 		F021A76C235F8BF2005E95CB /* MediaDetailIteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021A76B235F8BF2005E95CB /* MediaDetailIteractor.swift */; };
+		F021A76E235F9F6E005E95CB /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021A76D235F9F6E005E95CB /* VideoModel.swift */; };
 		F03F618E235EAEE50075345D /* MediaDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F618D235EAEE50075345D /* MediaDetailRouter.swift */; };
 		F03F6191235EAFA90075345D /* MediaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F618F235EAFA90075345D /* MediaDetailViewController.swift */; };
 		F03F6192235EAFA90075345D /* MediaDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F03F6190235EAFA90075345D /* MediaDetailViewController.xib */; };
@@ -69,6 +70,7 @@
 		C63AD6A180075743E88F5658 /* Pods_MovieApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA57AE2DE9EC1347BA9F53EF /* Pods-MovieApp-MovieAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieApp-MovieAppUITests.release.xcconfig"; path = "Target Support Files/Pods-MovieApp-MovieAppUITests/Pods-MovieApp-MovieAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F021A76B235F8BF2005E95CB /* MediaDetailIteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailIteractor.swift; sourceTree = "<group>"; };
+		F021A76D235F9F6E005E95CB /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		F03F618D235EAEE50075345D /* MediaDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailRouter.swift; sourceTree = "<group>"; };
 		F03F618F235EAFA90075345D /* MediaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetailViewController.swift; sourceTree = "<group>"; };
 		F03F6190235EAFA90075345D /* MediaDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MediaDetailViewController.xib; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				F08D29A3235E9F4E00AF0F04 /* MediaModel.swift */,
+				F021A76D235F9F6E005E95CB /* VideoModel.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				F03F6198235F46E90075345D /* SourceMediaType.swift in Sources */,
 				F03F619B235F4F700075345D /* MediaCell.swift in Sources */,
 				F0EDB4A1235E56F600BA26B0 /* HomeViewController.swift in Sources */,
+				F021A76E235F9F6E005E95CB /* VideoModel.swift in Sources */,
 				F0EDB4A9235E645A00BA26B0 /* TVShowsMenuViewController.swift in Sources */,
 				F08D29A4235E9F4E00AF0F04 /* MediaModel.swift in Sources */,
 				F08D29A1235E9BD200AF0F04 /* APIV3Url.swift in Sources */,
