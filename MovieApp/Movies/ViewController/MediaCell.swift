@@ -51,12 +51,6 @@ class MediaCell: UITableViewCell {
       self.releaseDate.text = mediaModel.releaseDate
     }else{
       self.releaseDate.text = mediaModel.firstAirDate
-    }
-    
+    }    
   }
-  
-  override func prepareForReuse() {
-    super.prepareForReuse()    
-  }
-  
 }

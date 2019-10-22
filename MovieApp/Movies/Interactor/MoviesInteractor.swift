@@ -55,19 +55,12 @@ class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputPr
     networkManager?.retrieveTopTVShows()
   }
   
-  func retrievePopularTVShows() {    
+  func retrievePopularTVShows() {
     networkManager?.retrievePopularTVShows()
   }
   
   func onPopularMoviesRetrieved(_ movies: [MediaModel]) {
-    switch sourceMadiaType {
-    case SourceMediaType.topMovies.rawValue:
-      presenter?.didRetrieveTopMovies(movies)
-    case SourceMediaType.popularMovies.rawValue:
-      presenter?.didRetrievePopularMovies(movies)
-    default:
-      presenter?.didRetrieveUpcomingMovies(movies)
-    }
+    presenter?.didRetrievePopularMovies(movies)
   }
   
   func onUpcomingMoviesRetrieved(_ movies: [MediaModel]) {
