@@ -10,7 +10,23 @@ import Foundation
 import ObjectMapper
 
 
-class MediaModel: NSObject, Mappable {
+class MediaResponse: Mappable {
+  var page: Int?
+  var results: [MediaModel]?
+  required init?(map: Map) {
+    
+  }
+  
+  func mapping(map: Map) {
+    page <- map["page"]
+    results <- map["results"]
+  }
+  
+  
+  
+}
+
+class MediaModel: Mappable {
   
   var id: Int?
   var posterPath: String?

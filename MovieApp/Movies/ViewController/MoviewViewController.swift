@@ -27,6 +27,7 @@ UITableViewDelegate, UITableViewDataSource {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    presenter?.viewDidLoad()
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MovieCell")
     self.tableView.delegate = self
     self.tableView.dataSource = self
@@ -36,6 +37,7 @@ UITableViewDelegate, UITableViewDataSource {
   
   
   func showTopMovieList(movies: [MediaModel]) {
+    self.movieList = movies
     self.tableView.reloadData()
   }
   

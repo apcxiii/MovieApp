@@ -21,9 +21,8 @@ protocol MoviesPresenterProtocol: class {
 
 
 class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
-  var view: MoviesViewProtocol?  
+  weak var view: MoviesViewProtocol?  
   var interactor: MoviesInteractorInputProtocol?
-  
   var router: MoviesRouterProtocol?
   
   func viewDidLoad() {

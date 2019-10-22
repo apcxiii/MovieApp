@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import AlamofireObjectMapper
 
-protocol NetworkingManagerInputProtocol: class {
+protocol NetworkingManagerInputProtocol: class {  
   var remoteRequestHandler: NetworkingManagerOutputProtocol? { get set }
   
   // INTERACTOR -> NETWORKINGMANAGER
@@ -18,9 +18,9 @@ protocol NetworkingManagerInputProtocol: class {
 }
 
 protocol NetworkingManagerOutputProtocol: class {
-    // NETWORKINGMANAGER -> INTERACTOR
-    func onTopMoviesRetrieved(_ movies: [MediaModel])
-    func onError()
+  // NETWORKINGMANAGER -> INTERACTOR
+  func onTopMoviesRetrieved(_ movies: [MediaModel])
+  func onError()
 }
 
 
@@ -31,17 +31,19 @@ class NetworkingManger: NetworkingManagerInputProtocol {
     //perform an HTTP GET request with the provided url
     Alamofire.request(APIV3Url.MoviesPopularList.fetch.url, method: .get)
       .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
-      .responseArray { (response: DataResponse<[MediaModel]>) in
+      .responseObject { (response: DataResponse<MediaResponse>) in
         switch response.result {
         case .success(_):
-          if let movies = response.result.value {
-            self.remoteRequestHandler?.onTopMoviesRetrieved(movies)
+          if let mediaResponse = response.result.value {
+            self.remoteRequestHandler?.onTopMoviesRetrieved(mediaResponse.results!)
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
         }
     }
+    
   }
+  
   
   
 }
