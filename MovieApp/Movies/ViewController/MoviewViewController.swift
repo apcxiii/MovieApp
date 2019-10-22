@@ -42,16 +42,19 @@ UITableViewDelegate, UITableViewDataSource {
   
   
   func showTopMovieList(movies: [MediaModel]) {
+    self.title = "Top Rated Movies"
     self.movieList = movies
     self.tableView.reloadData()
   }
   
   func showPopularMovieList(movies: [MediaModel]) {
+    self.title = "Popular Movies"
     self.movieList = movies
     self.tableView.reloadData()
   }
   
   func showUpcomingMovieList(movies: [MediaModel]) {
+    self.title = "Upcoming Movies"
     self.movieList = movies
     self.tableView.reloadData()
   }
@@ -85,11 +88,12 @@ UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let mediaModel = self.movieList[indexPath.row]
     presenter?.showMediaDetail(forMedia: mediaModel)
+    tableView.deselectRow(at: indexPath, animated: true)
   }
   
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 220
+    return 240
   }
   
   
