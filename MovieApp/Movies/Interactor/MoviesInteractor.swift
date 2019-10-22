@@ -15,7 +15,7 @@ protocol MoviesInteractorOutputProtocol: class {
     func onError()
 }
 
-protocol CarsInteractorInputProtocol: class {
+protocol MoviesInteractorInputProtocol: class {
   var presenter: MoviesInteractorOutputProtocol? { get set }
   var networkManager: NetworkingManagerInputProtocol? { get set }
   
@@ -23,19 +23,15 @@ protocol CarsInteractorInputProtocol: class {
   func retrieveTopMovies()
 }
 
-
-protocol NetworkingManagerOutputProtocol: class {
-    // NETWORKINGMANAGER -> INTERACTOR
-    func onTopMoviesRetrieved(_ movies: [MediaModel])
-    func onError()
-}
-
-
-
-class MoviesInteractor: NetworkingManagerOutputProtocol {
+class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputProtocol {
   
   weak var presenter: MoviesInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
+  
+  func retrieveTopMovies() {
+    networkManager?.retrieveTopMovies()
+  }
+  
   
   func onTopMoviesRetrieved(_ movies: [MediaModel]) {
     presenter?.didRetrieveTopMovies(movies)

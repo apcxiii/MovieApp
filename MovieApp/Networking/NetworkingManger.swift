@@ -15,7 +15,12 @@ protocol NetworkingManagerInputProtocol: class {
   
   // INTERACTOR -> NETWORKINGMANAGER
   func retrieveTopMovies()
-  
+}
+
+protocol NetworkingManagerOutputProtocol: class {
+    // NETWORKINGMANAGER -> INTERACTOR
+    func onTopMoviesRetrieved(_ movies: [MediaModel])
+    func onError()
 }
 
 

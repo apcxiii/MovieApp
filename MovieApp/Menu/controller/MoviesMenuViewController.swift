@@ -42,6 +42,12 @@ class MoviesMenuViewController: UIViewController, UITableViewDelegate, UITableVi
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
   }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let router = MoviesRouter.createMoviesModule()
+    self.navigationController?.pushViewController(router, animated: true)
+    self.tableView.deselectRow(at: indexPath, animated: true)
+  }
     
 
 }
