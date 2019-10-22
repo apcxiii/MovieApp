@@ -73,4 +73,41 @@ enum APIV3Url {
       }
     }
   }
+  
+  
+  enum TVShowsPopularList: APIUrl {
+    case fetch
+    
+    public var path: String {
+      switch self {
+      case .fetch:
+        return "/tv/popular?api_key=\(API.apiKey)"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch:
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
+  
+  enum TVShowsTopRatedList: APIUrl {
+    case fetch
+    
+    public var path: String {
+      switch self {
+      case .fetch:
+        return "/tv/top_rated?api_key=\(API.apiKey)"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch:
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
 }

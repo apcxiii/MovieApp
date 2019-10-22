@@ -32,15 +32,24 @@ class MediaModel: Mappable {
   var posterPath: String?
   var adult: Bool?
   var overview: String?
-  var releaseDate: String?
-  var originalTitle: String?
+  
   var originalLanguage: String?
-  var title: String?
+  
   var backdropPath: String?
   var popularity: Float?
   var voteCount: Int?
   var video: Bool?
   var voteAverage: Float?
+  
+  // MOVIE
+  var releaseDate: String?
+  var originalTitle: String?
+  var title: String?
+  
+  //TV SHOW
+  var firstAirDate: String?
+  var originalName: String?
+  var name: String?
   
   required init?(map: Map) {
     
@@ -59,6 +68,10 @@ class MediaModel: Mappable {
     popularity <- map["popularity"]
     voteCount <- map["vote_count"]
     voteAverage <- map["vote_average"]
+    
+    name <- map["name"]
+    originalName <- map["original_name"]
+    firstAirDate <- map["first_air_date"]
   }
   
   

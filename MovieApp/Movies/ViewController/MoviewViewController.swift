@@ -15,6 +15,8 @@ protocol MoviesViewProtocol: class {
   func showTopMovieList(movies: [MediaModel])
   func showPopularMovieList(movies: [MediaModel])
   func showUpcomingMovieList(movies: [MediaModel])
+  func showTopTvShowList(tvShows: [MediaModel])
+  func showPopularTVShowList(tvShows: [MediaModel])
   func showError()
   func showLoading()
   func hideLoading()
@@ -23,6 +25,8 @@ protocol MoviesViewProtocol: class {
 
 class MoviesViewController: UIViewController, MoviesViewProtocol,
 UITableViewDelegate, UITableViewDataSource {
+  
+  
   
   
   @IBOutlet weak var tableView: UITableView!
@@ -56,6 +60,19 @@ UITableViewDelegate, UITableViewDataSource {
   func showUpcomingMovieList(movies: [MediaModel]) {
     self.title = "Upcoming Movies"
     self.movieList = movies
+    self.tableView.reloadData()
+  }
+  
+  
+  func showTopTvShowList(tvShows: [MediaModel]) {
+    self.title = "Top Rated TV Shows"
+    self.movieList = tvShows
+    self.tableView.reloadData()
+  }
+  
+  func showPopularTVShowList(tvShows: [MediaModel]) {
+    self.title = "Popular TV Shows"
+    self.movieList = tvShows
     self.tableView.reloadData()
   }
   

@@ -19,15 +19,33 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
   
   @IBOutlet weak var imageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var releaseDateLabel: UILabel!
   @IBOutlet weak var originalTitleLabel: UILabel!
   @IBOutlet weak var overviewLabel: UILabel!
   @IBOutlet weak var originalLanguageLabel: UILabel!
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {
-    self.titleLabel.text = mediaModel.title
-    self.releaseDateLabel.text = mediaModel.releaseDate
-    self.originalTitleLabel.text = mediaModel.originalTitle
+    
+    if mediaModel.title != nil {
+      self.titleLabel.text = mediaModel.title
+    }else{
+      self.titleLabel.text = mediaModel.name
+    }
+    if mediaModel.releaseDate != nil {
+      self.dateLabel.text = "Release Date"
+      self.releaseDateLabel.text = mediaModel.releaseDate
+    }else{
+      self.dateLabel.text = "First Air Date"
+      self.releaseDateLabel.text = mediaModel.firstAirDate
+    }
+    
+    if mediaModel.originalTitle != nil {
+      self.originalTitleLabel.text = mediaModel.originalTitle
+    }else {
+      self.originalTitleLabel.text = mediaModel.originalName
+    }
+    
     self.overviewLabel.text = mediaModel.overview
     self.originalLanguageLabel.text = mediaModel.originalLanguage?.uppercased()
     if mediaModel.backdropPath != nil{

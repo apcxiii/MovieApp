@@ -44,4 +44,17 @@ class TVShowsMenuViewController: UIViewController, UITableViewDelegate, UITableV
     return 80
   }
   
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    switch indexPath.row {
+    case 0:
+      let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.popularTVShows.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
+    case 1:
+      let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.topTVShows.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)    
+    default:
+      NSLog("nothing to do")
+    }
+  }
+  
 }

@@ -25,6 +25,8 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
   
   
   
+  
+  
   weak var view: MoviesViewProtocol?  
   var interactor: MoviesInteractorInputProtocol?
   var router: MoviesRouterProtocol?
@@ -37,8 +39,14 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
       interactor?.retrieveTopMovies()
     case SourceMediaType.popularMovies.rawValue:
       interactor?.retrievePopularMovies()
-    default:
+    case SourceMediaType.upComingMovies.rawValue:
       interactor?.retriveUpcomingMovies()
+    case SourceMediaType.popularTVShows.rawValue:
+      interactor?.retrievePopularTVShows()
+    case SourceMediaType.topTVShows.rawValue:
+      interactor?.retrieveTopTVShows()
+    default:
+      NSLog("Nothig to do!")
     }
     
   }
@@ -63,6 +71,16 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
   func didRetrievePopularMovies(_ movies: [MediaModel]) {
     view?.hideLoading()
     view?.showPopularMovieList(movies: movies)
+  }
+  
+  func didRetrieveTopTvShows(_ tvShows: [MediaModel]) {
+    view?.hideLoading()
+    view?.showTopTvShowList(tvShows: tvShows)
+  }
+  
+  func didRetrievePopularShows(_ tvShows: [MediaModel]) {
+    view?.hideLoading()
+    view?.showPopularTVShowList(tvShows: tvShows)
   }
   
   

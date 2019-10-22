@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MediaDetailViewController" customModule="MovieApp" customModuleProvider="target">
             <connections>
+                <outlet property="dateLabel" destination="SPw-tI-UA0" id="rAI-re-6Aa"/>
                 <outlet property="imageView" destination="Ih8-yU-WxN" id="jdA-tM-spC"/>
                 <outlet property="originalLanguageLabel" destination="eVD-ed-DgI" id="cpJ-5p-IhX"/>
                 <outlet property="originalTitleLabel" destination="n3h-r6-Cmb" id="uzr-X7-fJs"/>

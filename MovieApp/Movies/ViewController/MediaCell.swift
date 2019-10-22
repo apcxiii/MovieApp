@@ -41,8 +41,18 @@ class MediaCell: UITableViewCell {
     if mediaModel.posterPath != nil{
       imageMediaView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/original/\(mediaModel.posterPath!)")!)
     }
-    self.titleMediaLabel.text = mediaModel.title
-    self.releaseDate.text = mediaModel.releaseDate
+    if mediaModel.title != nil {
+        self.titleMediaLabel.text = mediaModel.title
+    }else{
+      self.titleMediaLabel.text = mediaModel.name
+    }
+    
+    if mediaModel.releaseDate != nil {
+      self.releaseDate.text = mediaModel.releaseDate
+    }else{
+      self.releaseDate.text = mediaModel.firstAirDate
+    }
+    
   }
   
   override func prepareForReuse() {

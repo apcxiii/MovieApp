@@ -17,6 +17,10 @@ protocol NetworkingManagerInputProtocol: class {
   func retrieveTopMovies()
   func retrievePopularMovies()
   func retrieveUpcomingMovies()
+  
+  // INTERACTOR -> NETWORKINGMANAGER
+  func retrieveTopTVShows()
+  func retrievePopularTVShows()
 }
 
 protocol NetworkingManagerOutputProtocol: class {
@@ -24,12 +28,18 @@ protocol NetworkingManagerOutputProtocol: class {
   func onTopMoviesRetrieved(_ movies: [MediaModel])
   func onPopularMoviesRetrieved(_ movies: [MediaModel])
   func onUpcomingMoviesRetrieved(_ movies: [MediaModel])
+  
+  func onTopTVShowsRetrieved(_ tvShows: [MediaModel])
+  func onPopularTVShowsRetrieved(_ tvShows: [MediaModel])
+  
   func onError()
 }
 
 
 class NetworkingManger: NetworkingManagerInputProtocol {
-    var remoteRequestHandler: NetworkingManagerOutputProtocol?
+  
+  
+  var remoteRequestHandler: NetworkingManagerOutputProtocol?
   
   func retrievePopularMovies() {
     //perform an HTTP GET request with the provided url
@@ -78,7 +88,38 @@ class NetworkingManger: NetworkingManagerInputProtocol {
           self.remoteRequestHandler?.onError()
         }
     }
-    
+  }
+  
+  
+  func retrieveTopTVShows() {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.TVShowsTopRatedList.fetch.url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let mediaResponse = response.result.value {
+            self.remoteRequestHandler?.onTopTVShowsRetrieved(mediaResponse.results!)
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  func retrievePopularTVShows() {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.TVShowsPopularList.fetch.url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let mediaResponse = response.result.value {            self.remoteRequestHandler?.onPopularTVShowsRetrieved(mediaResponse.results!)
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
   }
   
   
