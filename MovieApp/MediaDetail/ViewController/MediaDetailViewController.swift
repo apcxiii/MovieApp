@@ -8,6 +8,7 @@
 
 import UIKit
 import PKHUD
+import YouTubePlayer_Swift
 
 protocol MediaDetailViewProtocol: class {
   var presenter: MediaDetailPresenterProtocol? { get set }
@@ -29,9 +30,10 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
   @IBOutlet weak var releaseDateLabel: UILabel!
   @IBOutlet weak var originalTitleLabel: UILabel!
   @IBOutlet weak var overviewLabel: UILabel!
-  @IBOutlet weak var originalLanguageLabel: UILabel!
-  
+  @IBOutlet weak var originalLanguageLabel: UILabel!  
+  @IBOutlet weak var videoPlayer: YouTubePlayerView!
   var presenter: MediaDetailPresenterProtocol?
+  var youtubeId: String?
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {
     
@@ -64,7 +66,7 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.presenter?.viewDidLoad()
-    self.title = "Detail"
+    self.title = "Detail"    
   }
   
   func showError() {
@@ -81,13 +83,23 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
   
   
   func showMovieVideoList(videos: [VideoModel]) {
-    print(videos)
+    
+    if let firstVideoYoutube = videos.first(where: {$0.site == "YouTube"}){
+      self.youtubeId = firstVideoYoutube.key
+      videoPlayer.playerVars = ["playsinline": "1" as AnyObject]
+      if firstVideoYoutube.key != nil {
+        videoPlayer.loadVideoID(firstVideoYoutube.key!)
+      }
+    }
   }
   
   func showTVShowVideoList(videos: [VideoModel]) {
-    print(videos)
+    if let firstVideoYoutube = videos.first(where: {$0.site == "YouTube"}){
+      videoPlayer.playerVars = ["playsinline": "1" as AnyObject]
+      if firstVideoYoutube.key != nil {
+        videoPlayer.loadVideoID(firstVideoYoutube.key!)
+      }
+    }
   }
-  
-  
   
 }

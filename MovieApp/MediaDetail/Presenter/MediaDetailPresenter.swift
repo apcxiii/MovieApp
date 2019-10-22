@@ -28,7 +28,12 @@ class MediaDetailPresenter: MediaDetailPresenterProtocol, MediaDetailInteractorO
   func viewDidLoad() {
     if let media = media {
       view?.showMediaDetail(forMedia: media)
-      interactor?.retrieveMovieVideos(media.id!)
+      if media.title != nil {
+        interactor?.retrieveMovieVideos(media.id!)
+      }else if media.name != nil {
+        interactor?.retrieveTVShowVideos(media.id!)
+      }
+      
     }    
   }
   

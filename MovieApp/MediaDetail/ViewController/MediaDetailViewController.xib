@@ -17,6 +17,7 @@
                 <outlet property="overviewLabel" destination="n7K-wp-TMc" id="gab-7O-FRF"/>
                 <outlet property="releaseDateLabel" destination="Kqq-mx-yQq" id="48D-ln-xOZ"/>
                 <outlet property="titleLabel" destination="SUu-Md-41s" id="1Ty-nf-gxS"/>
+                <outlet property="videoPlayer" destination="bXC-gx-25G" id="hMc-Zb-31m"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,6 +32,10 @@
                         <constraint firstAttribute="height" constant="250" id="c6j-da-g4Q"/>
                     </constraints>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bXC-gx-25G" customClass="YouTubePlayerView" customModule="YouTubePlayer_Swift">
+                    <rect key="frame" x="0.0" y="44" width="414" height="250"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3s-Xi-OU6">
                     <rect key="frame" x="10" y="304" width="42" height="21"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
@@ -103,18 +108,22 @@
                 <constraint firstItem="hm7-ag-zuU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="8uc-tT-UDM"/>
                 <constraint firstItem="n7K-wp-TMc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="FBy-OO-1Mo"/>
                 <constraint firstItem="SPw-tI-UA0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="FpD-99-dKg"/>
+                <constraint firstItem="bXC-gx-25G" firstAttribute="leading" secondItem="Ih8-yU-WxN" secondAttribute="leading" id="Gai-nA-R0h"/>
                 <constraint firstItem="n3h-r6-Cmb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="Nrt-Hm-muT"/>
                 <constraint firstItem="Ih8-yU-WxN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="P4e-K5-K3h"/>
                 <constraint firstItem="n7K-wp-TMc" firstAttribute="top" secondItem="EK6-I9-TAw" secondAttribute="bottom" constant="10" id="RdX-Vm-5mw"/>
+                <constraint firstItem="bXC-gx-25G" firstAttribute="trailing" secondItem="Ih8-yU-WxN" secondAttribute="trailing" id="WGw-OY-rcx"/>
                 <constraint firstItem="Ypi-hW-Dzd" firstAttribute="top" secondItem="Kqq-mx-yQq" secondAttribute="bottom" constant="10" id="eYp-3i-q76"/>
                 <constraint firstItem="EK6-I9-TAw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ezc-sQ-Pv3"/>
                 <constraint firstItem="Ih8-yU-WxN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fB2-Uc-IT8"/>
+                <constraint firstItem="bXC-gx-25G" firstAttribute="top" secondItem="Ih8-yU-WxN" secondAttribute="top" id="fqL-hm-c3e"/>
                 <constraint firstItem="Kqq-mx-yQq" firstAttribute="top" secondItem="SPw-tI-UA0" secondAttribute="bottom" constant="10" id="h5x-PO-ZGO"/>
                 <constraint firstItem="D3s-Xi-OU6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="hNc-eF-Ndj"/>
                 <constraint firstItem="SUu-Md-41s" firstAttribute="top" secondItem="D3s-Xi-OU6" secondAttribute="bottom" constant="10" id="jQn-x4-OUs"/>
                 <constraint firstItem="D3s-Xi-OU6" firstAttribute="top" secondItem="Ih8-yU-WxN" secondAttribute="bottom" constant="10" id="kSB-Is-ACK"/>
                 <constraint firstItem="eVD-ed-DgI" firstAttribute="top" secondItem="hm7-ag-zuU" secondAttribute="bottom" constant="10" id="lKE-vH-NRy"/>
                 <constraint firstItem="SUu-Md-41s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="p1f-fB-ugF"/>
+                <constraint firstItem="bXC-gx-25G" firstAttribute="bottom" secondItem="Ih8-yU-WxN" secondAttribute="bottom" id="pIa-cv-bvE"/>
                 <constraint firstItem="SPw-tI-UA0" firstAttribute="top" secondItem="SUu-Md-41s" secondAttribute="bottom" constant="10" id="qMu-9N-Ra1"/>
                 <constraint firstItem="hm7-ag-zuU" firstAttribute="top" secondItem="n7K-wp-TMc" secondAttribute="bottom" constant="10" id="qbA-di-b2k"/>
                 <constraint firstItem="Ypi-hW-Dzd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="vcK-rE-gdt"/>

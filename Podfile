@@ -9,6 +9,7 @@ target 'MovieApp' do
   pod 'PKHUD', '~> 5.0'
   pod 'ReachabilitySwift'  
   pod 'SDWebImage', '~> 4.3'
+  pod 'YouTubePlayer-Swift'
 
   # Pods for MovieApp
 
