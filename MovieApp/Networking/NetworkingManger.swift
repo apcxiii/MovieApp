@@ -15,21 +15,57 @@ protocol NetworkingManagerInputProtocol: class {
   
   // INTERACTOR -> NETWORKINGMANAGER
   func retrieveTopMovies()
+  func retrievePopularMovies()
+  func retrieveUpcomingMovies()
 }
 
 protocol NetworkingManagerOutputProtocol: class {
   // NETWORKINGMANAGER -> INTERACTOR
   func onTopMoviesRetrieved(_ movies: [MediaModel])
+  func onPopularMoviesRetrieved(_ movies: [MediaModel])
+  func onUpcomingMoviesRetrieved(_ movies: [MediaModel])
   func onError()
 }
 
 
 class NetworkingManger: NetworkingManagerInputProtocol {
+  func retrievePopularMovies() {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.MoviesPopularList.fetch.url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let mediaResponse = response.result.value {
+            self.remoteRequestHandler?.onPopularMoviesRetrieved(mediaResponse.results!)
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  func retrieveUpcomingMovies() {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.MoviesUpComingList.fetch.url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let mediaResponse = response.result.value {
+            self.remoteRequestHandler?.onUpcomingMoviesRetrieved(mediaResponse.results!)
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
   var remoteRequestHandler: NetworkingManagerOutputProtocol?
   
   func retrieveTopMovies() {
     //perform an HTTP GET request with the provided url
-    Alamofire.request(APIV3Url.MoviesPopularList.fetch.url, method: .get)
+    Alamofire.request(APIV3Url.MoviesTopRatedList.fetch.url, method: .get)
       .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
       .responseObject { (response: DataResponse<MediaResponse>) in
         switch response.result {

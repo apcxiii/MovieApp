@@ -10,9 +10,11 @@ import Foundation
 
 
 protocol MoviesInteractorOutputProtocol: class {
-    // INTERACTOR -> PRESENTER
-    func didRetrieveTopMovies(_ movies: [MediaModel])
-    func onError()
+  // INTERACTOR -> PRESENTER
+  func didRetrieveTopMovies(_ movies: [MediaModel])
+  func didRetrieveUpcomingMovies(_ movies: [MediaModel])
+  func didRetrievePopularMovies(_ movies: [MediaModel])
+  func onError()
 }
 
 protocol MoviesInteractorInputProtocol: class {
@@ -25,11 +27,21 @@ protocol MoviesInteractorInputProtocol: class {
 
 class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputProtocol {
   
+  
+  
   weak var presenter: MoviesInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
   
   func retrieveTopMovies() {
     networkManager?.retrieveTopMovies()
+  }
+  
+  func onPopularMoviesRetrieved(_ movies: [MediaModel]) {
+    presenter?.didRetrievePopularMovies(movies)
+  }
+  
+  func onUpcomingMoviesRetrieved(_ movies: [MediaModel]) {
+    presenter?.didRetrieveUpcomingMovies(movies)
   }
   
   
