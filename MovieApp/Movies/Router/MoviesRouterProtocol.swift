@@ -11,7 +11,7 @@ import UIKit
 protocol MoviesRouterProtocol: class {
   static func createMoviesModule(sourceMediaType: Int) -> UIViewController
   // PRESENTER -> ROUTER
-  func presentMovieDetailScreen(from view: MoviesViewProtocol, forCar media: MediaModel)
+  func presentMovieDetailScreen(from view: MoviesViewProtocol, forMedia media: MediaModel)
 }
 
 
@@ -19,7 +19,7 @@ protocol MoviesRouterProtocol: class {
 class MoviesRouter: MoviesRouterProtocol {
   
   
-  func presentMovieDetailScreen(from view: MoviesViewProtocol, forCar media: MediaModel) {
+  func presentMovieDetailScreen(from view: MoviesViewProtocol, forMedia media: MediaModel) {
     let mediaDetailViewController = MediaDetailRouter.createMediaDetailModule(forMedia: media)
     if let sourceView = view as? UIViewController {
       sourceView.navigationController?.pushViewController(mediaDetailViewController, animated: true)

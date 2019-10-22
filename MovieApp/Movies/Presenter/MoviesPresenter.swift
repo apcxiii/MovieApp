@@ -53,7 +53,7 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {
     if let view = view {
-      router?.presentMovieDetailScreen(from: view, forCar: mediaModel)
+      router?.presentMovieDetailScreen(from: view, forMedia: mediaModel)
     }
   }
   
