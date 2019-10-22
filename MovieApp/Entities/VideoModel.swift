@@ -16,7 +16,7 @@ class VideoResponse: Mappable {
   
   func mapping(map: Map) {
     id      <- map["id"]
-    results <- map["result"]
+    results <- map["results"]
   }
   
   var id: Int?

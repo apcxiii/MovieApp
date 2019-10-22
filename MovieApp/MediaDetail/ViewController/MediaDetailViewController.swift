@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import PKHUD
 
 protocol MediaDetailViewProtocol: class {
   var presenter: MediaDetailPresenterProtocol? { get set }
   
   // PRESENTER -> VIEW
   func showMediaDetail(forMedia mediaModel: MediaModel)
+  func showMovieVideoList(videos: [VideoModel])
+  func showTVShowVideoList(videos: [VideoModel])
+  func showError()
+  func showLoading()
+  func hideLoading()
 }
 
 class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
@@ -24,6 +30,8 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
   @IBOutlet weak var originalTitleLabel: UILabel!
   @IBOutlet weak var overviewLabel: UILabel!
   @IBOutlet weak var originalLanguageLabel: UILabel!
+  
+  var presenter: MediaDetailPresenterProtocol?
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {
     
@@ -53,13 +61,33 @@ class MediaDetailViewController: UIViewController, MediaDetailViewProtocol {
     }
   }
   
-  
-  var presenter: MediaDetailPresenterProtocol?
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     self.presenter?.viewDidLoad()
     self.title = "Detail"
   }
+  
+  func showError() {
+    HUD.flash(.label("Error"), delay: 2.0)
+  }
+  
+  func showLoading() {
+    HUD.show(.progress)
+  }
+  
+  func hideLoading() {
+    HUD.hide()
+  }
+  
+  
+  func showMovieVideoList(videos: [VideoModel]) {
+    print(videos)
+  }
+  
+  func showTVShowVideoList(videos: [VideoModel]) {
+    print(videos)
+  }
+  
+  
   
 }

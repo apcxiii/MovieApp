@@ -18,6 +18,9 @@ protocol NetworkingManagerInputProtocol: class {
   func retrievePopularMovies()
   func retrieveUpcomingMovies()
   
+  func retrieveMovieVideos(id: Int)
+  func retrieveTVShowsVideos(id: Int)
+  
   // INTERACTOR -> NETWORKINGMANAGER
   func retrieveTopTVShows()
   func retrievePopularTVShows()
@@ -32,13 +35,14 @@ protocol NetworkingManagerOutputProtocol: class {
   func onTopTVShowsRetrieved(_ tvShows: [MediaModel])
   func onPopularTVShowsRetrieved(_ tvShows: [MediaModel])
   
+  func onTVShowVideosRetrieved(_ videos: [VideoModel])
+  func onMovieVideosRetrieved(_ videos: [VideoModel])
+  
   func onError()
 }
 
 
 class NetworkingManger: NetworkingManagerInputProtocol {
-  
-  
   var remoteRequestHandler: NetworkingManagerOutputProtocol?
   
   func retrievePopularMovies() {
@@ -49,7 +53,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let mediaResponse = response.result.value {
-            self.remoteRequestHandler?.onPopularMoviesRetrieved(mediaResponse.results!)
+            self.remoteRequestHandler?.onPopularMoviesRetrieved(mediaResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
@@ -65,7 +69,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let mediaResponse = response.result.value {
-            self.remoteRequestHandler?.onUpcomingMoviesRetrieved(mediaResponse.results!)
+            self.remoteRequestHandler?.onUpcomingMoviesRetrieved(mediaResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
@@ -82,7 +86,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let mediaResponse = response.result.value {
-            self.remoteRequestHandler?.onTopMoviesRetrieved(mediaResponse.results!)
+            self.remoteRequestHandler?.onTopMoviesRetrieved(mediaResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
@@ -99,7 +103,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let mediaResponse = response.result.value {
-            self.remoteRequestHandler?.onTopTVShowsRetrieved(mediaResponse.results!)
+            self.remoteRequestHandler?.onTopTVShowsRetrieved(mediaResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
@@ -114,7 +118,38 @@ class NetworkingManger: NetworkingManagerInputProtocol {
       .responseObject { (response: DataResponse<MediaResponse>) in
         switch response.result {
         case .success(_):
-          if let mediaResponse = response.result.value {            self.remoteRequestHandler?.onPopularTVShowsRetrieved(mediaResponse.results!)
+          if let mediaResponse = response.result.value {            self.remoteRequestHandler?.onPopularTVShowsRetrieved(mediaResponse.results ?? [])
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  
+  func retrieveMovieVideos(id: Int) {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.MovieVideoList.fetch(id).url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<VideoResponse>) in
+        switch response.result {
+        case .success(_):
+          if let videoResponse = response.result.value {            self.remoteRequestHandler?.onMovieVideosRetrieved(videoResponse.results ?? [])
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  func retrieveTVShowsVideos(id: Int) {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.TVShowVideoList.fetch(id).url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<VideoResponse>) in
+        switch response.result {
+        case .success(_):
+          if let videoResponse = response.result.value {            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()

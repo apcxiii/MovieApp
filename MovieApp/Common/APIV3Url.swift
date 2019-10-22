@@ -110,4 +110,40 @@ enum APIV3Url {
       }
     }
   }
+  
+  enum TVShowVideoList: APIUrl {
+    case fetch(_ id: Int)
+    
+    public var path: String {
+      switch self {
+      case .fetch(let id):
+        return "/tv/\(id)/videos?api_key=\(API.apiKey)"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch(_):
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
+  
+  enum MovieVideoList: APIUrl {
+    case fetch(_ id: Int)
+    
+    public var path: String {
+      switch self {
+      case .fetch(let id):
+        return "/movie/\(id)/videos?api_key=\(API.apiKey)"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch(_):
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
 }

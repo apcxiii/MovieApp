@@ -70,8 +70,5 @@ class MediaModel: Mappable {
     name            <- map["name"]
     originalName    <- map["original_name"]
     firstAirDate    <- map["first_air_date"]
-  }
-  
-  
-  
+  }  
 }

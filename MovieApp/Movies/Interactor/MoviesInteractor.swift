@@ -18,6 +18,7 @@ protocol MoviesInteractorOutputProtocol: class {
   
   func didRetrieveTopTvShows(_ tvShows: [MediaModel])
   func didRetrievePopularShows(_ tvShows: [MediaModel])
+   
   func onError()
 }
 
@@ -34,7 +35,7 @@ protocol MoviesInteractorInputProtocol: class {
 }
 
 class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputProtocol {
-  
+      
   weak var presenter: MoviesInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
   var sourceMadiaType: Int = 0
@@ -81,6 +82,14 @@ class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputPr
     presenter?.didRetrievePopularShows(tvShows)
   }
   
+  
+  func onTVShowVideosRetrieved(_ videos: [VideoModel]) {
+    
+  }
+  
+  func onMovieVideosRetrieved(_ videos: [VideoModel]) {
+    
+  }
   
   func onError() {
     presenter?.onError()

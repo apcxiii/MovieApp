@@ -22,11 +22,6 @@ protocol MoviesPresenterProtocol: class {
 
 
 class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
-  
-  
-  
-  
-  
   weak var view: MoviesViewProtocol?  
   var interactor: MoviesInteractorInputProtocol?
   var router: MoviesRouterProtocol?
@@ -82,6 +77,14 @@ class MoviesPresenter: MoviesPresenterProtocol, MoviesInteractorOutputProtocol {
     view?.hideLoading()
     view?.showPopularTVShowList(tvShows: tvShows)
   }
+  
+  func didRetrieveTVShowVideos(_ videos: [VideoModel]) {
+    view?.hideLoading()
+   }
+   
+   func didRetrieveMovieVideos(_ videos: [VideoModel]) {
+    view?.hideLoading()
+   }
   
   
   func onError() {
