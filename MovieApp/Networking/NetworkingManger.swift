@@ -1,0 +1,42 @@
+//
+//  NetworkingManger.swift
+//  MovieApp
+//
+//  Created by Erik on 21/10/19.
+//  Copyright © 2019 Test. All rights reserved.
+//
+
+import Foundation
+import Alamofire
+import AlamofireObjectMapper
+
+protocol NetworkingManagerInputProtocol: class {
+  var remoteRequestHandler: NetworkingManagerOutputProtocol? { get set }
+  
+  // INTERACTOR -> NETWORKINGMANAGER
+  func retrieveTopMovies()
+  
+}
+
+
+class NetworkingManger: NetworkingManagerInputProtocol {
+  var remoteRequestHandler: NetworkingManagerOutputProtocol?
+  
+  func retrieveTopMovies() {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.MoviesPopularList.fetch.url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseArray { (response: DataResponse<[MediaModel]>) in
+        switch response.result {
+        case .success(_):
+          if let movies = response.result.value {
+            self.remoteRequestHandler?.onTopMoviesRetrieved(movies)
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  
+}
