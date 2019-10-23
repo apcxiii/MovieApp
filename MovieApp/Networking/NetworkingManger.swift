@@ -171,7 +171,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let videoResponse = response.result.value {
-//            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
+            self.remoteRequestHandler?.onMoviewSearchRetrieved(videoResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()
@@ -187,7 +187,7 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let videoResponse = response.result.value {
-//            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
+            self.remoteRequestHandler?.onTVShowSearchRetrieved(videoResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()

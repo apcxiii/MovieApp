@@ -19,27 +19,71 @@ protocol SearchMediaViewProtocol: class {
 }
 
 class SearchMediaViewController: UIViewController, SearchMediaViewProtocol,
-UITableViewDataSource, UITableViewDelegate {
+UITableViewDataSource, UITableViewDelegate,
+UISearchResultsUpdating, UISearchBarDelegate {
+  
+  
   
   
   
   @IBOutlet weak var tableView: UITableView!
   var presenter: SearchMediaPresenterProtocol?
   var mediaList = [MediaModel]()
-  
-  
+  let searchController = UISearchController(searchResultsController: nil)
+  var accessoryDoneButton: UIBarButtonItem!
+  let accessoryToolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.presenter?.viewDidLoad()
     self.title = "Search"
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MovieCell")
     self.tableView.register(UINib(nibName: "MediaCell", bundle: nil), forCellReuseIdentifier: "MediaCell")
     self.tableView.delegate = self
     self.tableView.dataSource = self
     self.tableView.tableFooterView = UIView()
+    self.setupSearchController()
+    
   }
   
+  private func setupSearchController() -> Void {
+    self.searchController.searchResultsUpdater = self
+    self.searchController.view.backgroundColor = .clear
+    self.searchController.dimsBackgroundDuringPresentation = false
+    self.searchController.hidesNavigationBarDuringPresentation = false
+    self.extendedLayoutIncludesOpaqueBars = true
+    self.definesPresentationContext = true
+    self.searchController.searchBar.barTintColor = .black
+    self.searchController.searchBar.placeholder = "SEARCH"
+    self.searchController.searchBar.showsCancelButton = false
+    self.searchController.searchBar.tintColor = .gray
+    self.searchController.searchBar.delegate = self
+    
+    if let textfield = self.searchController.searchBar.value(forKey: "searchField") as? UITextField {
+      textfield.backgroundColor = .darkGray
+      textfield.font = UIFont.systemFont(ofSize: 17)
+      textfield.textColor = .white
+      textfield.tintColor = .darkGray
+      textfield.returnKeyType = .search
+      textfield.keyboardAppearance = .dark
+      
+      self.accessoryDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done,
+                                                 target: self,
+                                                 action: #selector(self.donePressed(_:)))
+      self.accessoryDoneButton.tintColor = .lightGray
+      let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+      self.accessoryToolBar.items = [flexibleSpace, self.accessoryDoneButton]
+      textfield.inputAccessoryView = self.accessoryToolBar
+    }
+    self.tableView.tableHeaderView = self.searchController.searchBar
+  }
+  
+  @objc func donePressed(_ sender: UIButton) -> Void {
+      self.view.endEditing(true)
+    self.searchController.searchBar.text = ""
+    self.searchController.dismiss(animated: true, completion: nil)
+    self.mediaList = []
+    self.tableView.reloadData()
+    }
   
   func showSearchMovieList(movies: [MediaModel]) {
     self.title = "Search Movies"
@@ -90,4 +134,11 @@ UITableViewDataSource, UITableViewDelegate {
     return 240
   }
   
+  //MARK:- UISearchResultsUpdating functions
+  func updateSearchResults(for searchController: UISearchController) {
+    if let queryText = searchController.searchBar.text, !queryText.isEmpty{
+      presenter?.viewDidLoad(query: queryText)
+    }
+    
+  }
 }

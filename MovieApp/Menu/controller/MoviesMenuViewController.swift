@@ -56,7 +56,8 @@ class MoviesMenuViewController: UIViewController, UITableViewDelegate, UITableVi
       let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.upComingMovies.rawValue)
       self.navigationController?.pushViewController(router, animated: true)
     default:
-      NSLog("nothing to do")
+      let router = SearchMediaRouter.createMoviesModule(sourceMediaType: SourceMediaType.searchMovies.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
     }
     
     

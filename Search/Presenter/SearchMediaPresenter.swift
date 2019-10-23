@@ -16,19 +16,28 @@ protocol SearchMediaPresenterProtocol: class {
   var sourceMediaType: Int {get set}
   
   // VIEW -> PRESENTER
-  func viewDidLoad()
+  func viewDidLoad(query: String)
   func showMediaDetail(forMedia mediaModel: MediaModel)
+  
 }
 
-class SearchMediaPresenter: SearchMediaPresenterProtocol, SearchMediaInteractorOutputProtocol {  
+class SearchMediaPresenter: SearchMediaPresenterProtocol, SearchMediaInteractorOutputProtocol {
+  
+  
   var view: SearchMediaViewProtocol?
   var router: SearchMediaRouterProtocol?
   var interactor: SearchMediaInteractorInputProtocol?
   var media: MediaModel?
   var sourceMediaType: Int = 0
   
-  func viewDidLoad() {
+  func viewDidLoad(query: String) {
     view?.showLoading()
+    if sourceMediaType == SourceMediaType.searchMovies.rawValue {
+      interactor?.retrieveSearchMovies(query: query)
+    }else if sourceMediaType == SourceMediaType.searchTVShows.rawValue {
+      interactor?.retrieveSearchTVShows(query: query)
+    }
+    
   }
   
   func showMediaDetail(forMedia mediaModel: MediaModel) {

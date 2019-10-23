@@ -53,7 +53,8 @@ class TVShowsMenuViewController: UIViewController, UITableViewDelegate, UITableV
       let router = MoviesRouter.createMoviesModule(sourceMediaType: SourceMediaType.topTVShows.rawValue)
       self.navigationController?.pushViewController(router, animated: true)    
     default:
-      NSLog("nothing to do")
+      let router = SearchMediaRouter.createMoviesModule(sourceMediaType: SourceMediaType.searchTVShows.rawValue)
+      self.navigationController?.pushViewController(router, animated: true)
     }
   }
   
