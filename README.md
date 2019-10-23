@@ -34,28 +34,28 @@ pod install
 ```
 
 ## Capas de la Aplicación
-####Vista
+#### Vista
  Es la capa que solo debe interactuar con el usuario, tal como gestos al dar tap en un botón o componentes de UI, en el flujo VIPER es quien se comunica con el Interactor.
  
 	- MoviesViewController
 	- MediaDetailViewController
 	- SearchMediaViewController
  
-####Presenter
+#### Presenter
  Es la capa que se comunica con las demás capas, en pocas palabras es la capa encargada de tomar decisiones para obtener datos, repintar UI, comunicarse con el Router para empujar otras vistas.
  
 	- MoviesPresenter
 	- MediaDetailPresenter
 	- SearchMediaPresenter
 
-####Interactor
+#### Interactor
 Esta capa contiene la lógica del negocio, principalmente los llamados a la capa de servicio (API), y tiene como principal socio al Presenter cada que termina de hacer una petición a la API, para notificar si tuvo éxito o no en las peticiones que se realizaron.
 
 	- MoviesInteractor
 	- MediaDetailInteractor
 	- SearchMediaInteractor
 
-####Router
+#### Router
  Es la capa encargada de crear módulos a través de UINAvigationController, se pueden crear módulos ya sea por UIStoryboard o simplemente instanciando Controllers via xib file, y a su vez también es la capa responsable de mostrar las alertas.
  
 	- MoviesRouter
