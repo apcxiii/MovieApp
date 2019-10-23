@@ -35,7 +35,6 @@ protocol MoviesInteractorInputProtocol: class {
 }
 
 class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputProtocol {
-      
   weak var presenter: MoviesInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
   var sourceMadiaType: Int = 0
@@ -84,16 +83,22 @@ class MoviesInteractor: MoviesInteractorInputProtocol, NetworkingManagerOutputPr
   
   
   func onTVShowVideosRetrieved(_ videos: [VideoModel]) {
-    
+    //nothig to do
   }
   
   func onMovieVideosRetrieved(_ videos: [VideoModel]) {
-    
+    //nothig to do
+  }
+  
+  func onTVShowSearchRetrieved(_ tvShows: [MediaModel]) {
+    //nothig to do
+  }
+  
+  func onMoviewSearchRetrieved(_ movies: [MediaModel]) {
+    //nothig to do
   }
   
   func onError() {
     presenter?.onError()
   }
-  
-  
 }

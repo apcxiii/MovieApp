@@ -38,6 +38,11 @@
 		F0EDB4AE235E686000BA26B0 /* MoviesMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0EDB4AC235E686000BA26B0 /* MoviesMenuViewController.xib */; };
 		F0EDB4BA235E900200BA26B0 /* MoviesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDB4B9235E900200BA26B0 /* MoviesInteractor.swift */; };
 		F0EDB4BE235E912800BA26B0 /* NetworkingManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EDB4BD235E912800BA26B0 /* NetworkingManger.swift */; };
+		F0FE805E235FFF1D0065CCC4 /* SearchMediaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE805D235FFF1D0065CCC4 /* SearchMediaRouter.swift */; };
+		F0FE8061236000F00065CCC4 /* SearchMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE805F236000F00065CCC4 /* SearchMediaViewController.swift */; };
+		F0FE8062236000F00065CCC4 /* SearchMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FE8060236000F00065CCC4 /* SearchMediaViewController.xib */; };
+		F0FE8064236002010065CCC4 /* SearchMediaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE8063236002010065CCC4 /* SearchMediaPresenter.swift */; };
+		F0FE8066236002A90065CCC4 /* SearchMediaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FE8065236002A90065CCC4 /* SearchMediaInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +108,11 @@
 		F0EDB4AC235E686000BA26B0 /* MoviesMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesMenuViewController.xib; sourceTree = "<group>"; };
 		F0EDB4B9235E900200BA26B0 /* MoviesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesInteractor.swift; sourceTree = "<group>"; };
 		F0EDB4BD235E912800BA26B0 /* NetworkingManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManger.swift; sourceTree = "<group>"; };
+		F0FE805D235FFF1D0065CCC4 /* SearchMediaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMediaRouter.swift; sourceTree = "<group>"; };
+		F0FE805F236000F00065CCC4 /* SearchMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMediaViewController.swift; sourceTree = "<group>"; };
+		F0FE8060236000F00065CCC4 /* SearchMediaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMediaViewController.xib; sourceTree = "<group>"; };
+		F0FE8063236002010065CCC4 /* SearchMediaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMediaPresenter.swift; sourceTree = "<group>"; };
+		F0FE8065236002A90065CCC4 /* SearchMediaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMediaInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				F0EDB46E235E37E900BA26B0 /* MovieApp */,
+				F0FE8057235FF3A90065CCC4 /* Search */,
 				F0EDB485235E37EB00BA26B0 /* MovieAppTests */,
 				F0EDB490235E37EB00BA26B0 /* MovieAppUITests */,
 				F0EDB46D235E37E900BA26B0 /* Products */,
@@ -370,6 +381,58 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		F0FE8057235FF3A90065CCC4 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				F0FE805C235FFE9A0065CCC4 /* ViewController */,
+				F0FE805B235FFE920065CCC4 /* Interactor */,
+				F0FE805A235FFE890065CCC4 /* Presenter */,
+				F0FE8059235FFE790065CCC4 /* Entity */,
+				F0FE8058235FFE6F0065CCC4 /* Router */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		F0FE8058235FFE6F0065CCC4 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				F0FE805D235FFF1D0065CCC4 /* SearchMediaRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		F0FE8059235FFE790065CCC4 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		F0FE805A235FFE890065CCC4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				F0FE8063236002010065CCC4 /* SearchMediaPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		F0FE805B235FFE920065CCC4 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				F0FE8065236002A90065CCC4 /* SearchMediaInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		F0FE805C235FFE9A0065CCC4 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F0FE805F236000F00065CCC4 /* SearchMediaViewController.swift */,
+				F0FE8060236000F00065CCC4 /* SearchMediaViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		F1DDEB2E860BEA7679EC60FD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -497,6 +560,7 @@
 				F0EDB4AE235E686000BA26B0 /* MoviesMenuViewController.xib in Resources */,
 				F0EDB4AA235E645A00BA26B0 /* TVShowsMenuViewController.xib in Resources */,
 				F0EDB47C235E37EB00BA26B0 /* LaunchScreen.storyboard in Resources */,
+				F0FE8062236000F00065CCC4 /* SearchMediaViewController.xib in Resources */,
 				F0EDB479235E37EB00BA26B0 /* Assets.xcassets in Resources */,
 				F03F6192235EAFA90075345D /* MediaDetailViewController.xib in Resources */,
 				F03F619C235F4F700075345D /* MediaCell.xib in Resources */,
@@ -614,10 +678,13 @@
 				F03F6194235EB0140075345D /* MediaDetailPresenter.swift in Sources */,
 				F0EDB4AD235E686000BA26B0 /* MoviesMenuViewController.swift in Sources */,
 				F0EDB470235E37E900BA26B0 /* AppDelegate.swift in Sources */,
+				F0FE8064236002010065CCC4 /* SearchMediaPresenter.swift in Sources */,
 				F021A76C235F8BF2005E95CB /* MediaDetailInteractor.swift in Sources */,
+				F0FE8066236002A90065CCC4 /* SearchMediaInteractor.swift in Sources */,
 				F08D29A8235EA82E00AF0F04 /* MoviesRouter.swift in Sources */,
 				F0EDB4BE235E912800BA26B0 /* NetworkingManger.swift in Sources */,
 				F03F6191235EAFA90075345D /* MediaDetailViewController.swift in Sources */,
+				F0FE805E235FFF1D0065CCC4 /* SearchMediaRouter.swift in Sources */,
 				F0EDB4BA235E900200BA26B0 /* MoviesInteractor.swift in Sources */,
 				F03F618E235EAEE50075345D /* MediaDetailRouter.swift in Sources */,
 				F08D29AA235EA8C300AF0F04 /* MoviewViewController.swift in Sources */,
@@ -625,6 +692,7 @@
 				F03F619B235F4F700075345D /* MediaCell.swift in Sources */,
 				F0EDB4A1235E56F600BA26B0 /* HomeViewController.swift in Sources */,
 				F021A76E235F9F6E005E95CB /* VideoModel.swift in Sources */,
+				F0FE8061236000F00065CCC4 /* SearchMediaViewController.swift in Sources */,
 				F0EDB4A9235E645A00BA26B0 /* TVShowsMenuViewController.swift in Sources */,
 				F08D29A4235E9F4E00AF0F04 /* MediaModel.swift in Sources */,
 				F08D29A1235E9BD200AF0F04 /* APIV3Url.swift in Sources */,

@@ -24,6 +24,9 @@ protocol NetworkingManagerInputProtocol: class {
   // INTERACTOR -> NETWORKINGMANAGER
   func retrieveTopTVShows()
   func retrievePopularTVShows()
+  
+  func retrieveSearchMovies(query: String)
+  func retrieveSearchTVShows(query: String)
 }
 
 protocol NetworkingManagerOutputProtocol: class {
@@ -37,6 +40,9 @@ protocol NetworkingManagerOutputProtocol: class {
   
   func onTVShowVideosRetrieved(_ videos: [VideoModel])
   func onMovieVideosRetrieved(_ videos: [VideoModel])
+  
+  func onTVShowSearchRetrieved(_ tvShows: [MediaModel])
+  func onMoviewSearchRetrieved(_ movies: [MediaModel])
   
   func onError()
 }
@@ -150,6 +156,38 @@ class NetworkingManger: NetworkingManagerInputProtocol {
         switch response.result {
         case .success(_):
           if let videoResponse = response.result.value {            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  func retrieveSearchMovies(query: String) {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.MovieSearhList.fetch(query).url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let videoResponse = response.result.value {
+//            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
+          }
+        case .failure(_):
+          self.remoteRequestHandler?.onError()
+        }
+    }
+  }
+  
+  func retrieveSearchTVShows(query: String) {
+    //perform an HTTP GET request with the provided url
+    Alamofire.request(APIV3Url.TVShowSearhList.fetch(query).url, method: .get)
+      .validate()//automatic validation checks that the response returns a valid HTTP Code between 200 and 299
+      .responseObject { (response: DataResponse<MediaResponse>) in
+        switch response.result {
+        case .success(_):
+          if let videoResponse = response.result.value {
+//            self.remoteRequestHandler?.onTVShowVideosRetrieved(videoResponse.results ?? [])
           }
         case .failure(_):
           self.remoteRequestHandler?.onError()

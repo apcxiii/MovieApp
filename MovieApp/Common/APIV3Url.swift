@@ -146,4 +146,38 @@ enum APIV3Url {
       }
     }
   }
+  
+  enum MovieSearhList: APIUrl {
+    case fetch(_ query: String)
+    public var path: String {
+      switch self {
+      case .fetch(let query):
+        return "/search/movie?api_key=\(API.apiKey)&language=en-US&query=\(query)&page=1&include_adult=false"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch(_):
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
+  
+  enum TVShowSearhList: APIUrl {
+    case fetch(_ query: String)
+    public var path: String {
+      switch self {
+      case .fetch(let query):
+        return "/search/tv?api_key=\(API.apiKey)&language=en-US&query=\(query)&page=1&include_adult=false"
+      }
+    }
+    
+    public var url: String {
+      switch self {
+      case .fetch(_):
+        return "\(API.baseUrl)\(path)"
+      }
+    }
+  }
 }

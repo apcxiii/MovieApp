@@ -9,6 +9,7 @@
 import Foundation
 
 protocol MediaDetailInteractorOutputProtocol: class {
+  // INTERACTOR -> PRESENTER
   func didRetrieveTVShowVideos(_ videos: [VideoModel])
   func didRetrieveMovieVideos(_ videos: [VideoModel])
   func onError()
@@ -18,6 +19,7 @@ protocol MediaDetailInteractorOutputProtocol: class {
 protocol MediaDetailInteractorInputProtocol: class {
   var presenter: MediaDetailInteractorOutputProtocol? { get set }
   var networkManager: NetworkingManagerInputProtocol? { get set }
+  var sourceMadiaType: Int {get set}
   
   // PRESENTER -> INTERACTOR
   func retrieveMovieVideos(_ id: Int)
@@ -25,6 +27,7 @@ protocol MediaDetailInteractorInputProtocol: class {
 }
 
 class MediaDetailInteractor: MediaDetailInteractorInputProtocol, NetworkingManagerOutputProtocol{
+  var sourceMadiaType: Int = 0  
   var presenter: MediaDetailInteractorOutputProtocol?
   var networkManager: NetworkingManagerInputProtocol?
   
@@ -62,6 +65,14 @@ class MediaDetailInteractor: MediaDetailInteractorInputProtocol, NetworkingManag
   
   func onMovieVideosRetrieved(_ videos: [VideoModel]) {
     presenter?.didRetrieveMovieVideos(videos)
+  }
+  
+  func onTVShowSearchRetrieved(_ tvShows: [MediaModel]) {
+    
+  }
+  
+  func onMoviewSearchRetrieved(_ movies: [MediaModel]) {
+    
   }
   
   func onError() {

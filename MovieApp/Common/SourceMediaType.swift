@@ -14,4 +14,6 @@ enum SourceMediaType: Int {
   case upComingMovies = 2
   case topTVShows = 3
   case popularTVShows = 4
+  case searchMovies = 5
+  case searchTVShows = 6
 }

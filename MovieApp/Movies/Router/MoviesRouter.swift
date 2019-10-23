@@ -16,9 +16,7 @@ protocol MoviesRouterProtocol: class {
 
 
 
-class MoviesRouter: MoviesRouterProtocol {
-  
-  
+class MoviesRouter: MoviesRouterProtocol {  
   func presentMovieDetailScreen(from view: MoviesViewProtocol, forMedia media: MediaModel) {
     let mediaDetailViewController = MediaDetailRouter.createMediaDetailModule(forMedia: media)
     if let sourceView = view as? UIViewController {
