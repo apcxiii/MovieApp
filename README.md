@@ -68,7 +68,9 @@ Capa Encargada de de Objetos o Estructuras manejados por el Interactor para ser 
 	- VideoModel
 
 
-Además se utilizó un Manager para la comunicación con la API, utilizando un patrón de diseño convertible con Enums para realizar los llamados a la capa de servicio
+Además se utilizó un Manager para la comunicación con la API, utilizando un patrón de diseño convertible con Enums para realizar los llamados a la capa de servicio.
+
+La capa de Persistencia, se la delega a Alamofire con un DataResponse para mantenerlo en caché, dado que las respuestas de la API, se actualizan día a día y no es necesario usar algún ORM como Realm o SQLLite
 
 ## Conclusiones
 1. En qué consiste el principio de responsabilidad única? 
