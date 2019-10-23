@@ -1,5 +1,5 @@
 # Movie App iOS
-> iOS App with VIPER architecture to show Movies and TV Shows from [https://api.themoviedb.org/3](https://developers.themoviedb.org/)
+> Aplication iOS para visaualizar Películas o Series de Telivisión exploantado la API de: [https://api.themoviedb.org/3](https://developers.themoviedb.org/)
 
 [![Swift Version][swift-image]][swift-url]
 [![Swift Version][swift-image]][swift-url]
@@ -7,32 +7,84 @@
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/LFAlertController.svg)  
 [![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
 
-One to two paragraph statement about your product and what it does.
+La aplicación está creada con la arquitectura VIPER
 
-![](header.png)
 
-## Features
+## Carácteristicas
 
-- [x] Show Popular Movies
-- [x] Show Top Rated Movies
-- [x] Show Upcoming Movies
-- [x] Search Online Movies
-- [x] Show Popular TV Shows
-- [x] Show Top Rated TV Shows
-- [x] Search Online TV Shows
+- [x] Despliegue de Películas Populares (Popular) [Online/Offline]
+- [x] Despliegue de Películas Más Valoradas (Top Rated) [Online/Offline]
+- [x] Despliegue de Películas en Próximos lanzamientos (Upcoming) [Online/Offline]
+- [x] Búsqueda de Películas Online
+- [x] Despliegue de Series de Televisión Populares (Popular) [Online/Offline]
+- [x] Despliegue de Series de Televisión Más Valoradas (Top Rated) [Online/Offline]
+- [x] Búsqueda de Series de Televisión Online
 
-## Requirements
+## Requeriminetos
 
 - iOS 11.0+
 - Xcode 11.1
 
-## Installation
+## Instalación
 
 #### CocoaPods
 
 ```ruby
 pod install
 ```
+
+## Capas de la Aplicación
+####Vista
+ Es la capa que solo debe interactuar con el usuario, tal como gestos al dar tap en un botón o componentes de UI, en el flujo VIPER es quien se comunica con el Interactor.
+ 
+	- MoviesViewController
+	- MediaDetailViewController
+	- SearchMediaViewController
+ 
+####Presenter
+ Es la capa que se comunica con las demás capas, en pocas palabras es la capa encargada de tomar decisiones para obtener datos, repintar UI, comunicarse con el Router para empujar otras vistas.
+ 
+	- MoviesPresenter
+	- MediaDetailPresenter
+	- SearchMediaPresenter
+
+####Interactor
+Esta capa contiene la lógica del negocio, principalmente los llamados a la capa de servicio (API), y tiene como principal socio al Presenter cada que termina de hacer una petición a la API, para notificar si tuvo éxito o no en las peticiones que se realizaron.
+
+	- MoviesInteractor
+	- MediaDetailInteractor
+	- SearchMediaInteractor
+
+####Router
+ Es la capa encargada de crear módulos a través de UINAvigationController, se pueden crear módulos ya sea por UIStoryboard o simplemente instanciando Controllers via xib file, y a su vez también es la capa responsable de mostrar las alertas.
+ 
+	- MoviesRouter
+	- MediaDetailRouter
+	- SearchMediaRouter
+ 
+#### Entity 
+Capa Encargada de de Objetos o Estructuras manejados por el Interactor para ser llevados entre las capas del flujo VIPER, cabe resaltar que pueden ser comunes los objetos para cada una de las escenas/flujos que se llegasen a construir dentro de la aplicación.
+	- MediaModel
+	- VideoModel
+
+
+Además se utilizó un Manager para la comunicación con la API, utilizando un patrón de diseño convertible con Enums para realizar los llamados a la capa de servicio
+
+## Conclusiones
+1. En qué consiste el principio de responsabilidad única? 
+	- Single Responsability Principle, menciona que una clase debe tener solo una razón para cambiar y este mismo principio se puede aplicar a métodos y/o funciones.
+
+
+2. Cuál es su propósito?
+	- Separar, aislar y encapsular cada clase con métodos y funciones con responsabilidad única.
+	- Extraer la lógica de negocio de los ViewControllers.
+	- Tener componente reutilizables en proyectos grandes o pequeños.
+
+
+3. Qué características tiene, según su opinión, un “buen” código o código limpio
+	- Que siga una arquitectura y patrones de diseño
+	- Entiendase por arquitectura todo aquello que tenga que ver con la organización de alto nivel en toda la aplicación. Una buena arquitectura garantiza que todos los llamados a métodos y funciones se reproduzcan bien
+	- Por último un patrón de diseño es todo aquello que tiene que ver con el paradigma de programación de bajo nivel para hacer un feature.
 
 
 ## Meta

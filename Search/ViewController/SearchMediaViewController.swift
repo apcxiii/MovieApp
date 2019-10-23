@@ -18,7 +18,7 @@ protocol SearchMediaViewProtocol: class {
   func hideLoading()
 }
 
-class SearchMediaViewController: UIViewController, SearchMediaViewProtocol,
+class e: UIViewController, SearchMediaViewProtocol,
 UITableViewDataSource, UITableViewDelegate,
 UISearchResultsUpdating, UISearchBarDelegate {
   
