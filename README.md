@@ -64,6 +64,7 @@ Esta capa contiene la lógica del negocio, principalmente los llamados a la capa
  
 #### Entity 
 Capa Encargada de de Objetos o Estructuras manejados por el Interactor para ser llevados entre las capas del flujo VIPER, cabe resaltar que pueden ser comunes los objetos para cada una de las escenas/flujos que se llegasen a construir dentro de la aplicación.
+
 	- MediaModel
 	- VideoModel
 
